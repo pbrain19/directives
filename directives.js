@@ -10,11 +10,18 @@ app.directive('gridContainer', function() {
   return {
     restrict: 'E',
     controller: function($scope, $http) {
+      $scope.order = 'name';
       $scope.cols = [];
       $scope.rows = [];
+
       this.addCol = function(col) {
         $scope.cols.push(col);
       }
+
+      $scope.setOrder = function(fieldName) {
+        $scope.order = $scope.order === fieldName? '-' + fieldName: fieldName;
+      }
+
       $http.get('/api/data.json').success(function(response) {
         console.log(response);
         $scope.rows = response.data;

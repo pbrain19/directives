@@ -3,13 +3,13 @@
   <table>
     <thead >
       <tr>
-        <td ng-repeat="c in cols">
+        <td ng-repeat="c in cols" ng-click="setOrder(c.field)">
           {{c.name}}
         </td>
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="r in rows">
+      <tr ng-repeat="r in rows | orderBy: order">
          <td ng-repeat="c in cols">{{r[c.field]}}</td>
       </tr>
     </tbody>
