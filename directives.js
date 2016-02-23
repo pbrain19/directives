@@ -9,6 +9,7 @@ var app = angular.module('sample');
 app.directive('gridContainer', function() {
   return {
     restrict: 'E',
+    require: 'gridContainer',
     controller: function($scope, $http) {
       $scope.order = 'name';
       $scope.cols = [];
@@ -23,13 +24,14 @@ app.directive('gridContainer', function() {
       }
 
       $http.get('/api/data.json').success(function(response) {
-        console.log(response);
         $scope.rows = response.data;
-      })
+      });
 
     },
-    link: function(scope, el, attr) {
-      console.log('link for container')
+    link: function(scope, el, attr, controller) {
+      console.log(scope.order);
+      console.log(scope.cols);
+      console.log(typeof scope.addCol)
     },
     transclude: true,
     templateUrl: './autoComplete.html'
