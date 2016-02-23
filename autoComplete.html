@@ -5,6 +5,8 @@
       <tr>
         <td ng-repeat="c in cols" ng-click="setOrder(c.field)">
           {{c.name}}
+          <span ng-show="c.field === order">&cuwed;</span>
+          <span ng-show="'-' + c.field === order">&cuvee;</span>
         </td>
       </tr>
     </thead>
