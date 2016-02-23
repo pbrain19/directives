@@ -1,0 +1,17 @@
+<div>
+  <div ng-transclude></div>
+  <table>
+    <thead >
+      <tr>
+        <td ng-repeat="c in cols">
+          {{c.name}}
+        </td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="r in rows">
+         <td ng-repeat="c in cols">{{r[c.field]}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
